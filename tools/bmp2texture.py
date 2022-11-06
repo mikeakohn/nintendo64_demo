@@ -82,12 +82,11 @@ n = 0
 
 if bits_per_pixel == 1:
   last = -1
+  width_in_bytes = width * 3
+  width_in_bytes = (width_in_bytes + 3) & ~3
 
-  print("image_size=" + str(image_size))
-
-  #while n < image_size:
   for y in reversed(range(0, height)):
-    n = (y * width * 3)
+    n = (y * width_in_bytes)
 
     for x in range(0, width):
       pixel = 0
@@ -104,8 +103,11 @@ if bits_per_pixel == 1:
       out.write(bytes([pixel]))
 
 elif bits_per_pixel == 16:
+  width_in_bytes = width * 3
+  width_in_bytes = (width_in_bytes + 3) & ~3
+
   for y in reversed(range(0, height)):
-    n = (y * width * 3)
+    n = (y * width_in_bytes)
 
     for x in range(0, width):
       r = (data[image_offset + n + 2]) >> 3

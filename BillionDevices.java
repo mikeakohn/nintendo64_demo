@@ -24,14 +24,58 @@ public class BillionDevices
     rectangle_2.setSize(256, 20);
     rectangle_2.setColor(0x924a40ff);
 
-    for (n = 0; n < 60 * 6; n++)
+    Rectangle rectangle_java = new Rectangle();
+    rectangle_java.setTextureEnabled(32, 23);
+
+    short[] java = Memory.preloadShortArray("assets/java_32px.rgba");
+
+    // Full size: 50 x 35
+    int size_x = 16;
+    int size_y = 1;
+
+    for (n = 0; n < 17; n++)
     {
       Nintendo64.setScreen(screen);
       Nintendo64.clearScreen();
       rectangle_1.draw();
       rectangle_2.draw();
 
+      Nintendo64.loadTexture(java, 32, 23);
+      rectangle_java.setPosition(160 - (size_x / 2), 100);
+      rectangle_java.setSize(size_x, size_y);
+      rectangle_java.draw();
+
+      size_x += 2;
+      size_y += 2;
+
       drawBillion();
+      drawJavaGrinder();
+
+      Nintendo64.waitForPolygon();
+      Nintendo64.waitVsync();
+
+      screen = (screen + 1) & 1;
+    }
+
+    short[] its_me_java = Memory.preloadShortArray("assets/its_me_java.pcm");
+
+    Nintendo64.setAudioDACRate(93750000 / 11000);
+    Nintendo64.setAudioBitRate(2);
+    //Nintendo64.playAudio(its_me_java, 47506);
+    Nintendo64.playAudio(its_me_java, its_me_java.length * 2);
+
+    for (n = 0; n < 60 * 2; n++)
+    {
+      Nintendo64.setScreen(screen);
+      Nintendo64.clearScreen();
+      rectangle_1.draw();
+      rectangle_2.draw();
+
+      Nintendo64.loadTexture(java, 32, 23);
+      rectangle_java.draw();
+
+      drawBillion();
+      drawJavaGrinder();
 
       Nintendo64.waitForPolygon();
       Nintendo64.waitVsync();
@@ -56,7 +100,24 @@ public class BillionDevices
         Nintendo64.plot(index++, billion[ptr++]);
       }
     }
+  }
 
+  public static void drawJavaGrinder()
+  {
+    int x, y;
+    int ptr = 0;
+    int index = 0;
+    short[] java_grinder = Memory.preloadShortArray("assets/java_grinder.rgba");
+
+    for (y = 0; y < 13; y++)
+    {
+      index = ((y + 168) * 320) + 65;
+
+      for (x = 0; x < 190; x++)
+      {
+        Nintendo64.plot(index++, java_grinder[ptr++]);
+      }
+    }
   }
 }
 
