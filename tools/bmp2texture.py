@@ -67,7 +67,7 @@ print("     compression: " + str(get_int32(data, 30)))
 print("      image size: " + str(get_int32(data, 34)))
 print("       horiz res: " + str(get_int32(data, 38)))
 print("        vert res: " + str(get_int32(data, 42)))
-print("  paletta colors: " + str(get_int32(data, 46)))
+print("  palette colors: " + str(get_int32(data, 46)))
 print("important colors: " + str(get_int32(data, 50)))
 
 if bits_per_pixel == 1:

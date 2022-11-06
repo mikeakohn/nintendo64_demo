@@ -7,6 +7,8 @@ public class Nintendo64Demo
 {
   public static void main(String[] args)
   {
+    BillionDevices.run();
+
     int y = 50, dy = 1, rz = 30;
     int screen = 0;
     int x;
@@ -28,10 +30,8 @@ public class Nintendo64Demo
       Nintendo64.setScreen(screen);
       Nintendo64.clearScreen();
       rectangle.draw();
-      Nintendo64.waitForPolygon();
       triangle.setRotation(0, 0, rz);
       triangle.draw();
-      Nintendo64.waitForPolygon();
       for (x = 0; x < 319; x++) { Nintendo64.plot(x, y, 0xf800); }
       Nintendo64.waitVsync();
 
