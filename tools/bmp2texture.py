@@ -85,31 +85,37 @@ if bits_per_pixel == 1:
 
   print("image_size=" + str(image_size))
 
-  while n < image_size:
-    pixel = 0
+  #while n < image_size:
+  for y in reversed(range(0, height)):
+    n = (y * width * 3)
 
-    for i in range(0, 8):
+    for x in range(0, width):
+      pixel = 0
+
+      for i in range(0, 8):
+        r = (data[image_offset + n + 2]) >> 3
+        g = (data[image_offset + n + 1]) >> 3
+        b = (data[image_offset + n + 0]) >> 3
+        n = n + 3
+
+        pixel = pixel << 1
+        if r != 0 or g != 0 or b != 0: pixel |= 1
+
+      out.write(bytes([pixel]))
+
+elif bits_per_pixel == 16:
+  for y in reversed(range(0, height)):
+    n = (y * width * 3)
+
+    for x in range(0, width):
       r = (data[image_offset + n + 2]) >> 3
       g = (data[image_offset + n + 1]) >> 3
       b = (data[image_offset + n + 0]) >> 3
       n = n + 3
 
-      pixel = pixel << 1
-      if r != 0 or g != 0 or b != 0: pixel |= 1
+      pixel = (r << 11) | (g << 6) | (b << 1)
 
-    out.write(bytes([pixel]))
-
-elif bits_per_pixel == 16:
-
-  while n < image_size:
-    r = (data[image_offset + n + 2]) >> 3
-    g = (data[image_offset + n + 1]) >> 3
-    b = (data[image_offset + n + 0]) >> 3
-    n = n + 3
-
-    pixel = (r << 11) | (g << 6) | (b << 1)
-
-    out.write(pixel.to_bytes(2, byteorder='big'))
+      out.write(pixel.to_bytes(2, byteorder='big'))
 
 fp.close()
 out.close()
