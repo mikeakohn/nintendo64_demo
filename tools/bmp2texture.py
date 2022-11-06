@@ -88,7 +88,7 @@ if bits_per_pixel == 1:
   for y in reversed(range(0, height)):
     n = (y * width_in_bytes)
 
-    for x in range(0, width):
+    for x in range(0, int(width / 8)):
       pixel = 0
 
       for i in range(0, 8):

@@ -3,7 +3,9 @@ JAVA_GRINDER=../java_grinder/java_grinder
 NAKEN_ASM=../naken_asm/naken_asm
 CLASSES= \
   BillionDevices.class \
-  Nintendo64Demo.class
+  Font.class \
+  Nintendo64Demo.class \
+  TitleScreen.class
 
 default: $(CLASSES)
 	$(JAVA_GRINDER) -v Nintendo64Demo.class nintendo64_demo.asm nintendo64
