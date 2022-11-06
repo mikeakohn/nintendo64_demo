@@ -1,0 +1,7 @@
+*.class
+*.bin
+*.z64
+*.lst
+*.asm
+n64crc
+
