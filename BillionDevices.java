@@ -28,25 +28,42 @@ public class BillionDevices
     rectangle_java.setTextureEnabled(32, 23);
 
     short[] java = Memory.preloadShortArray("assets/java_32px.rgba");
+    Nintendo64.loadTexture(java, 32, 23);
 
     // Full size: 50 x 35
     int size_x = 16;
     int size_y = 1;
 
-    for (n = 0; n < 17; n++)
+    for (n = 0; n < 30 * 2; n++)
     {
       Nintendo64.setScreen(screen);
       Nintendo64.clearScreen();
       rectangle_1.draw();
       rectangle_2.draw();
 
-      Nintendo64.loadTexture(java, 32, 23);
+      drawBillion();
+      drawJavaGrinder();
+
+      Nintendo64.waitForPolygon();
+      Nintendo64.waitVsync();
+
+      screen = (screen + 1) & 1;
+    }
+
+    for (n = 0; n < 34; n++)
+    {
+      Nintendo64.setScreen(screen);
+      Nintendo64.clearScreen();
+      rectangle_1.draw();
+      rectangle_2.draw();
+
+      //Nintendo64.loadTexture(java, 32, 23);
       rectangle_java.setPosition(160 - (size_x / 2), 100);
       rectangle_java.setSize(size_x, size_y);
       rectangle_java.draw();
 
-      size_x += 2;
-      size_y += 2;
+      size_x += 1;
+      size_y += 1;
 
       drawBillion();
       drawJavaGrinder();
@@ -61,17 +78,16 @@ public class BillionDevices
 
     Nintendo64.setAudioDACRate(93750000 / 11000);
     Nintendo64.setAudioBitRate(2);
-    //Nintendo64.playAudio(its_me_java, 47506);
     Nintendo64.playAudio(its_me_java, its_me_java.length * 2);
 
-    for (n = 0; n < 60 * 2; n++)
+    for (n = 0; n < 30 * 5; n++)
     {
       Nintendo64.setScreen(screen);
       Nintendo64.clearScreen();
       rectangle_1.draw();
       rectangle_2.draw();
 
-      Nintendo64.loadTexture(java, 32, 23);
+      //Nintendo64.loadTexture(java, 32, 23);
       rectangle_java.draw();
 
       drawBillion();
