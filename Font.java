@@ -25,11 +25,24 @@ public class Font
 
     for (int y = 0; y < 16; y++)
     {
-      int value = texture[ptr];
+      int value = font[ptr];
 
       for (int x = 0; x < 16; x++)
       {
-        font[next] = (short)((value & 0x8000) == 0 ? bg_color : fg_color);
+        int color;
+
+        if ((value & 0x8000) == 0)
+        {
+          color = bg_color;
+        }
+          else
+        {
+          color = fg_color;
+        }
+
+        //texture[next] = (short)((value & 0x8000) == 0 ? bg_color : fg_color);
+
+        texture[next] = (short)color;
 
         value = value << 1;
         next++;
