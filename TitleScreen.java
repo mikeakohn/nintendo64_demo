@@ -38,7 +38,7 @@ public class TitleScreen
     letter.setColor(0xff00ffff);
     letter.setTextureEnabled(16, 16);
 
-    while (true)
+    for (int count = 0; count < 690; count++)
     {
       Nintendo64.setScreen(screen);
       Nintendo64.clearScreen();
@@ -56,8 +56,15 @@ public class TitleScreen
 
         if (c != ' ')
         {
-          int letter_x = (int)(Math.cos512(r0) * 80) + 160;
-          int letter_y = (int)(Math.sin512(r0) * 80) + 100;
+          int k = r0;
+
+          if (count > 600)
+          {
+            if (k > 256 || k < 20) { k = 256; }
+          }
+
+          int letter_x = (int)(Math.cos512(k) * 80) + 160;
+          int letter_y = (int)(Math.sin512(k) * 80) + 100;
           int size = (int)(Math.cos512(r1) * 25);
           r1 += rx;
           if (r1 == 0) { rx = 1; }
@@ -65,7 +72,16 @@ public class TitleScreen
 
           Font.loadTexture(c, 0xffff, 0x3000);
           letter.setPosition(letter_x, letter_y);
-          letter.setSize(size, size);
+
+          if (count < 300)
+          {
+            letter.setSize(16, 16);
+          }
+            else
+          {
+            letter.setSize(size, size);
+          }
+
           letter.draw();
         }
 
