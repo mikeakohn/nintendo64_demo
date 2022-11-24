@@ -40,9 +40,9 @@ public class Matrix3D
       y = (x * Math.sin512(rz)) + (y * Math.cos512(rz));
     }
 
-    float x = coords[0];
-    float y = coords[1];
-    float z = coords[2];
+    coords[0] = x;
+    coords[1] = y;
+    coords[2] = z;
   }
 }
 
