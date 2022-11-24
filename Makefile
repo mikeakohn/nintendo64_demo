@@ -4,7 +4,9 @@ NAKEN_ASM=../naken_asm/naken_asm
 CLASSES= \
   BillionDevices.class \
   Font.class \
+  Matrix3D.class \
   Nintendo64Demo.class \
+  Sphere.class \
   TitleScreen.class
 
 default: $(CLASSES)
@@ -14,6 +16,9 @@ default: $(CLASSES)
 
 %.class: %.java
 	javac -classpath ../java_grinder/build/JavaGrinder.jar:. $*.java
+
+rsp:
+	cp ../naken_asm/samples/nintendo64/rsp.bin .
 
 clean:
 	@rm -f *.class *.hex *.asm *.lst *.bin *.z64
