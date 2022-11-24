@@ -7,8 +7,8 @@ public class Nintendo64Demo
 {
   public static void main(String[] args)
   {
-    //BillionDevices.run();
-    //TitleScreen.run();
+    BillionDevices.run();
+    TitleScreen.run();
     Bounce.run();
 
     while (true)
