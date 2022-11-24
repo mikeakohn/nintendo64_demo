@@ -9,6 +9,7 @@ public class Nintendo64Demo
   {
     BillionDevices.run();
     TitleScreen.run();
+    Bounce.run();
 
     while (true)
     {

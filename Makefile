@@ -3,10 +3,10 @@ JAVA_GRINDER=../java_grinder/java_grinder
 NAKEN_ASM=../naken_asm/naken_asm
 CLASSES= \
   BillionDevices.class \
+  Bounce.class \
   Font.class \
   Matrix3D.class \
   Nintendo64Demo.class \
-  Sphere.class \
   TitleScreen.class
 
 default: $(CLASSES)

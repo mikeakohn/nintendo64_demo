@@ -3,7 +3,7 @@ import net.mikekohn.java_grinder.Math;
 
 public class Matrix3D
 {
-  void rotate(float[] coords, int[] rotation)
+  static void rotate(float[] coords, int[] rotation)
   {
     float x = coords[0];
     float y = coords[1];
