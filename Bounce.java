@@ -29,9 +29,9 @@ public class Bounce
   {
     float[] xyz = new float[3];
     int[] rotation = new int[3];
-    int rx = 0, ry = 0;
+    int rx = 0, ry = 0, rz = 0;
     int x = 160, y = 120, z = 256;
-    int dx, dy;
+    int dx = 1, dy = 1;
     int screen = 0;
     int i;
 
@@ -40,6 +40,23 @@ public class Bounce
     triangle.setVertex1( -5,  5, 0);
     triangle.setVertex2(  5,  5, 0);
     triangle.setZBuffer(true);
+
+    Triangle triangle_1 = new Triangle();
+    triangle_1.setVertex0(  0, -30, 0);
+    triangle_1.setVertex1(-30,  30, 0);
+    triangle_1.setVertex2( 30,  30, 0);
+    triangle_1.setPosition(280, 50, 256 + 128 - 100);
+    triangle_1.setColor(0xff00ffff);
+    triangle_1.setZBuffer(true);
+
+    Triangle triangle_2 = new Triangle();
+    triangle_2.setVertex0(  0, -30, 0);
+    triangle_2.setVertex1(-30,  30, 0);
+    triangle_2.setVertex2( 30,  30, 0);
+    triangle_2.setPosition(50, 180, 256 + 128 - 200);
+    triangle_2.setColor(0x00ff00ff);
+    triangle_2.setZBuffer(true);
+
 
     for (int count = 0; count < 690; count++)
     {
@@ -72,20 +89,29 @@ public class Bounce
          if (color == 6) { color = 0; }
       }
 
-      //for (x = 0; x < 319; x++) { Nintendo64.plot(x, y, 0xf800); }
+      triangle_1.setRotation(0, 0, rz);
+      triangle_1.draw();
+
+      triangle_2.setRotation(rx, 0, rz);
+      triangle_2.draw();
+
       Nintendo64.waitVsync();
 
-/*
+      x += dx;
+      if (x == 265) { dx = -1; }
+      if (x == 50)  { dx =  1; }
+
       y += dy;
-      if (y == 130) { dy = -1; }
+      if (y == 180) { dy = -1; }
       if (y == 50)  { dy =  1; }
-*/
+
       rotation[0] = (rotation[0] + 3) & 511;
       rotation[1] = (rotation[1] + 1) & 511;
-      rotation[2] = (rotation[2] + 2) & 511;
+      //rotation[2] = (rotation[2] + 2) & 511;
 
       rx = (rx + 3) & 511;
       ry = (ry + 2) & 511;
+      rz = (ry + 1) & 511;
       screen = (screen + 1) & 1;
     }
   }
