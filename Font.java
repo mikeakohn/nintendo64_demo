@@ -66,7 +66,7 @@ public class Font
       loadTexture((int)(value - '0' + 26), fg_color, bg_color);
     }
       else
-    if (value >= '0' && value <= '0')
+    if (value >= '0' && value <= '9')
     {
       loadTexture((int)(value - '0' + 26), fg_color, bg_color);
     }
