@@ -9,7 +9,7 @@ public class ManyTriangles
 {
   public static void run()
   {
-    int rz = 0;
+    int ry = 0, rz = 0;
     int screen = 0;
     int width = 50, height = 50, rect_x = 50, rect_y = 20;
     int width_delta = 1, height_delta = 1, rect_dx = 1, rect_dy = 1;
@@ -27,6 +27,13 @@ public class ManyTriangles
     triangle.setVertex0(  0, -15, 0);
     triangle.setVertex1(-15,  15, 0);
     triangle.setVertex2( 15,  15, 0);
+
+    Triangle triangle_1 = new Triangle();
+    triangle_1.setVertex0(  0, -30, 0);
+    triangle_1.setVertex1(-30,  30, 0);
+    triangle_1.setVertex2( 30,  30, 0);
+    triangle_1.setPosition(150, 100, 256 + 128 - 100);
+    triangle_1.setColor(0xff00ffff);
 
     for (int count = 0; count < 690; count++)
     {
@@ -48,12 +55,15 @@ public class ManyTriangles
           triangle.setColor(color);
           triangle.draw();
 
-          color -= 0x00100000;
+          color -= 0x00130000;
           //rotation = (rotation + 10) & 511;
         }
 
-        color_start -= 0x00001000;
+        color_start -= 0x00001200;
       }
+
+      triangle_1.setRotation(0, ry, rz);
+      triangle_1.draw();
 
       rectangle.setPosition(rect_x, rect_y);
       rectangle.setSize(width, height);
@@ -76,6 +86,7 @@ public class ManyTriangles
       if (rect_y <= 20)  { rect_dy = 1; }
 
       // Rotate the triangles.
+      ry = (ry + 4) & 511;
       rz = (rz + 3) & 511;
 
       screen = (screen + 1) & 1;
