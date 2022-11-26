@@ -9,8 +9,8 @@ public class Font
   //  0: A   1: B   2: C   3: D   4: E   5: F   6: G   7: H
   //  8: I   9: J  10: K  11: L  12: M  13: N  14: O  15: P
   // 16: Q  17: R  18: S  19: T  20: U  21: V  22: W  23: X
-  // 20: Y  21: Z  22: 0  23: 1  24: 2  25: 3  26: 4  27: 5
-  // 28: 6  29: 7  30: 8  31: 9  32: .  33: !  34: ?  35: ' ' 
+  // 24: Y  25: Z  26: 0  27: 1  28: 2  29: 3  30: 4  31: 5
+  // 32: 6  33: 7  34: 8  35: 9  36: .  37: !  38: ?  39: ' '
   public static void loadTexture(int index, int fg_color, int bg_color)
   {
     short[] font = Memory.preloadShortArray("assets/font.1");
@@ -61,11 +61,6 @@ public class Font
       loadTexture((int)(value - 'A'), fg_color, bg_color);
     }
       else
-    if (value >= '0' && value <= '0')
-    {
-      loadTexture((int)(value - '0' + 26), fg_color, bg_color);
-    }
-      else
     if (value >= '0' && value <= '9')
     {
       loadTexture((int)(value - '0' + 26), fg_color, bg_color);
@@ -73,22 +68,22 @@ public class Font
       else
     if (value == '.')
     {
-      loadTexture(32, fg_color, bg_color);
+      loadTexture(36, fg_color, bg_color);
     }
       else
     if (value == '!')
     {
-      loadTexture(33, fg_color, bg_color);
+      loadTexture(37, fg_color, bg_color);
     }
       else
     if (value == '?')
     {
-      loadTexture(34, fg_color, bg_color);
+      loadTexture(38, fg_color, bg_color);
     }
       else
     if (value == ' ')
     {
-      loadTexture(35, fg_color, bg_color);
+      loadTexture(39, fg_color, bg_color);
     }
 
     return;
