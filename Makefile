@@ -4,6 +4,7 @@ NAKEN_ASM=../naken_asm/naken_asm
 CLASSES= \
   BillionDevices.class \
   Bounce.class \
+  Credits.class \
   Font.class \
   ManyTriangles.class \
   Matrix3D.class \
