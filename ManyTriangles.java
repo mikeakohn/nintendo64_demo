@@ -13,6 +13,7 @@ public class ManyTriangles
     int screen = 0;
     int width = 50, height = 50, rect_x = 50, rect_y = 20;
     int width_delta = 1, height_delta = 1, rect_dx = 1, rect_dy = 1;
+    int x, y;
 
     Rectangle rectangle = new Rectangle();
     rectangle.setPosition(50, 20);
@@ -22,10 +23,37 @@ public class ManyTriangles
     short[] texture = Memory.preloadShortArray("assets/java_texture.raw");
     Nintendo64.loadTexture(texture, 32, 9);
 
+    Triangle triangle = new Triangle();
+    triangle.setVertex0(  0, -15, 0);
+    triangle.setVertex1(-15,  15, 0);
+    triangle.setVertex2( 15,  15, 0);
+
     for (int count = 0; count < 690; count++)
     {
       Nintendo64.setScreen(screen);
       Nintendo64.clearScreen();
+
+      int color_start = 0x00ffffff;
+      int color;
+      int rotation = rz;
+
+      for (y = 0; y < 12; y++)
+      {
+        color = color_start;
+
+        for (x = 0; x < 12; x++)
+        {
+          triangle.setPosition(x * 25 + 20, y * 18 + 18, 256 + 128 - 100);
+          triangle.setRotation(0, 0, rotation);
+          triangle.setColor(color);
+          triangle.draw();
+
+          color -= 0x00100000;
+          //rotation = (rotation + 10) & 511;
+        }
+
+        color_start -= 0x00001000;
+      }
 
       rectangle.setPosition(rect_x, rect_y);
       rectangle.setSize(width, height);
@@ -48,7 +76,7 @@ public class ManyTriangles
       if (rect_y <= 20)  { rect_dy = 1; }
 
       // Rotate the triangles.
-      rz = (rz + 1) & 511;
+      rz = (rz + 3) & 511;
 
       screen = (screen + 1) & 1;
       Nintendo64.waitVsync();
