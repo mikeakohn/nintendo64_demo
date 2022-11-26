@@ -15,6 +15,28 @@ public class Credits
     '2', '0', '2', '2'
   };
 
+  public static short[] letters_demo_by =
+  {
+    'D', 'E', 'M', 'O', ' ', 'B', 'Y'
+  };
+
+/*
+  public static short[] letters_music_by =
+  {
+    'M', 'U', 'S', 'I', 'C', ' ', 'B', 'Y'
+  };
+*/
+
+  public static short[] letters_michael_kohn =
+  {
+    'M', 'I', 'C', 'H', 'A', 'E', 'L', ' ', 'K', 'O', 'H', 'N'
+  };
+
+  public static short[] letters_www =
+  {
+    'W', 'W', 'W', '.', 'M', 'I', 'K', 'E', 'K', 'O', 'H', 'N', '.', 'N', 'E', 'T'
+  };
+
   public static void run()
   {
     int screen = 0;
@@ -33,6 +55,14 @@ public class Credits
 
       drawText(letter, letters_java_grinder, 50, 40, start_k);
       drawText(letter, letters_2022, 120, 60, start_k);
+
+      drawText(letter, letters_demo_by, 100, 90, start_k);
+      drawText(letter, letters_michael_kohn, 50, 110, start_k);
+
+      //drawText(letter, letters_music_by, 100, 150, start_k);
+      //drawText(letter, letters_michael_kohn, 50, 160, start_k);
+
+      drawText(letter, letters_www, 20, 200, start_k);
 
       start_k = (start_k + 10) & 511;
 
