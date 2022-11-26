@@ -5,6 +5,7 @@ CLASSES= \
   BillionDevices.class \
   Bounce.class \
   Font.class \
+  ManyTriangles.class \
   Matrix3D.class \
   Nintendo64Demo.class \
   TitleScreen.class
