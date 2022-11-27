@@ -94,13 +94,14 @@ public class TitleScreen
       if (size_r == 90) { size_rx = -1; }
 
       for (x = 0; x < 319; x++) { Nintendo64.plot(x, y, 0xf800); }
-      Nintendo64.waitVsync();
 
       y += dy;
       if (y == 130) { dy = -1; }
       if (y == 50)  { dy =  1; }
-      screen = (screen + 1) & 1;
       rz = (rz + 3) & 511;
+
+      screen = (screen + 1) & 1;
+      Nintendo64.waitVsync();
     }
   }
 }

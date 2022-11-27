@@ -94,8 +94,6 @@ public class Bounce
       triangle_2.setRotation(rx, 0, rz);
       triangle_2.draw();
 
-      Nintendo64.waitVsync();
-
       x += dx;
       if (x == 265) { dx = -1; }
       if (x == 50)  { dx =  1; }
@@ -111,7 +109,9 @@ public class Bounce
       rx = (rx + 3) & 511;
       ry = (ry + 2) & 511;
       rz = (rz + 1) & 511;
+
       screen = (screen + 1) & 1;
+      Nintendo64.waitVsync();
     }
   }
 }

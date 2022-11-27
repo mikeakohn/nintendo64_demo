@@ -11,7 +11,7 @@ public class Nintendo64Demo
     TitleScreen.run();
     Bounce.run();
     ManyTriangles.run();
-    //Credits.run();
+    Credits.run();
 
     while (true)
     {

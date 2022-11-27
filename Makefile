@@ -19,6 +19,9 @@ default: $(CLASSES)
 %.class: %.java
 	javac -classpath ../java_grinder/build/JavaGrinder.jar:. $*.java
 
+song:
+	../drumsplusplus/playdpp -o assets/song.mid assets/song.dpp
+
 rsp:
 	cp ../naken_asm/samples/nintendo64/rsp.bin .
 
