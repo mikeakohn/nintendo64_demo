@@ -68,7 +68,7 @@ public class Bounce
       int coords = 0;
       int color = 0;
 
-      for (i = 0; i < object.length; i++)
+      for (i = 0; i < object.length; i = i + 3)
       {
         xyz[0] = object[coords + 0];
         xyz[1] = object[coords + 1];
