@@ -42,7 +42,9 @@ public class ManyTriangles
 
       int color_start = 0x00ffffff;
       int color;
-      int rotation = rz;
+      int rotation = 0;
+
+      if (count > 300) { rotation = ry; }
 
       for (y = 0; y < 12; y++)
       {
@@ -51,7 +53,7 @@ public class ManyTriangles
         for (x = 0; x < 12; x++)
         {
           triangle.setPosition(x * 25 + 20, y * 18 + 18, 256 + 128 - 100);
-          triangle.setRotation(0, 0, rotation);
+          triangle.setRotation(rotation, 0, rz);
           triangle.setColor(color);
           triangle.draw();
 
