@@ -6,6 +6,7 @@ CLASSES= \
   Bounce.class \
   Credits.class \
   Font.class \
+  JavaKong.class \
   ManyTriangles.class \
   Matrix3D.class \
   Nintendo64Demo.class \

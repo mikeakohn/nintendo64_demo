@@ -57,7 +57,7 @@ public class Bounce
     triangle_2.setColor(0x00ff00ff);
     triangle_2.setZBuffer(true);
 
-    for (int count = 0; count < 690; count++)
+    for (int count = 0; count < 600; count++)
     {
       Nintendo64.setScreen(screen);
       Nintendo64.clearScreen();

@@ -10,6 +10,7 @@ public class Nintendo64Demo
     BillionDevices.run();
     TitleScreen.run();
     Bounce.run();
+    JavaKong.run();
     ManyTriangles.run();
     Credits.run();
 
