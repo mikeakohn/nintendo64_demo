@@ -13,12 +13,17 @@ def get_int32(data, index):
 
 # ----------------------------- fold -----------------------------
 
-if len(sys.argv) != 3:
-  print("Usage: bmp2texture.py <filename> <1/RGBA>")
+if len(sys.argv) != 3 and len(sys.argv) != 4:
+  print("Usage: bmp2texture.py <filename> <1/RGBA> <alpha color:0x0000>")
   sys.exit(0)
 
 filename_bmp = sys.argv[1]
 filename_texture = filename_bmp.replace(".bmp", "")
+
+alpha = -1
+
+if len(sys.argv) == 4:
+  alpha = int(sys.argv[3], 16)
 
 bits_per_pixel = 0
 
@@ -98,6 +103,7 @@ if bits_per_pixel == 1:
         n = n + 3
 
         pixel = pixel << 1
+
         if r != 0 or g != 0 or b != 0: pixel |= 1
 
       out.write(bytes([pixel]))
@@ -116,6 +122,8 @@ elif bits_per_pixel == 16:
       n = n + 3
 
       pixel = (r << 11) | (g << 6) | (b << 1)
+
+      if pixel != alpha: pixel |= 1
 
       out.write(pixel.to_bytes(2, byteorder='big'))
 
