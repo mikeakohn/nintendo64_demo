@@ -7,6 +7,7 @@ CLASSES= \
   Credits.class \
   Font.class \
   JavaKong.class \
+  JavaTriangles.class \
   ManyTriangles.class \
   Matrix3D.class \
   Nintendo64Demo.class \
