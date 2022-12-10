@@ -13,6 +13,8 @@ public class Matrix3D
     int ry = rotation[1];
     int rz = rotation[2];
 
+    float t;
+
     float s, c;
 
     // [     1       0         0   ]   [ x ]
@@ -23,8 +25,9 @@ public class Matrix3D
       c = Math.cos512(rx);
       s = Math.sin512(rx);
 
-      y = (y * c) - (z * s);
+      t = (y * c) - (z * s);
       z = (y * s) + (z * c);
+      y = t;
     }
 
     // [ cos(ry)     0     sin(ry) ]   [ x ]
@@ -35,8 +38,9 @@ public class Matrix3D
       c = Math.cos512(ry);
       s = Math.sin512(ry);
 
-      x =  (x * c) + (z * s);
+      t =  (x * c) + (z * s);
       z = -(x * s) + (z * c);
+      x = t;
     }
 
     // [ cos(rz) -sin(rz)      0   ]   [ x ]
@@ -47,8 +51,9 @@ public class Matrix3D
       c = Math.cos512(rz);
       s = Math.sin512(rz);
 
-      x = (x * c) - (y * s);
+      t = (x * c) - (y * s);
       y = (x * s) + (y * c);
+      x = t;
     }
 
     coords[0] = x;
