@@ -58,6 +58,7 @@ public class JavaTriangles
     int x, y;
     float[] xyz = new float[3];
     int[] rotation = new int[3];
+    int mode = 0;
     //int ry = 0, rz = 0;
 
     Triangle triangle = new Triangle();
@@ -69,7 +70,7 @@ public class JavaTriangles
     rotation[1] = 0;
     rotation[2] = 0;
 
-    for (int count = 0; count < 690; count++)
+    for (int count = 0; count < 770; count++)
     {
       Nintendo64.setScreen(screen);
       Nintendo64.clearScreen();
@@ -92,7 +93,21 @@ public class JavaTriangles
       }
 
       // Rotate the triangles.
-      rotation[2] = (rotation[2] + 3) & 511;
+      if (count < 128)
+      {
+        rotation[1] = (rotation[1] + 4) & 511;
+      }
+        else
+      if (count < 256)
+      {
+        rotation[2] = (rotation[2] + 4) & 511;
+      }
+        else
+      {
+        //rotation[0] = (rotation[0] + 1) & 511;
+        rotation[1] = (rotation[1] + 2) & 511;
+        rotation[2] = (rotation[2] + 4) & 511;
+      }
 
       screen = (screen + 1) & 1;
       Nintendo64.waitVsync();
