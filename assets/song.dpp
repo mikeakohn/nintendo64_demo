@@ -14,7 +14,16 @@ pattern click_track
   closed_hihat: 1 2 3 4;
 }
 
-pattern main
+pattern main_1
+{
+  bassdrum: 1 1.75 2.5 3.5;
+  snare: 2 4;
+  closed_hihat: 1 1.5 2 2.5 3 3.5 4;
+  open_hihat: 4.5;
+  crash_cymbal1: 1;
+}
+
+pattern main_2
 {
   bassdrum: 1 1.75 2.5 3.5;
   snare: 2 4;
@@ -23,8 +32,13 @@ pattern main
   //splash_cymbal: 1;
 }
 
+section repeat
+{
+  play: 1 main_1, 3 main_2;
+}
+
 song test_song
 {
-  play: blank, click_track, 10 main;
+  play: blank, click_track, 8 repeat;
 }
 
