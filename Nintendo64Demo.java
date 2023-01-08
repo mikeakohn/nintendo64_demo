@@ -7,6 +7,8 @@ public class Nintendo64Demo
 {
   public static void main(String[] args)
   {
+    Song.init();
+
     BillionDevices.run();
     TitleScreen.run();
     JavaTriangles.run();

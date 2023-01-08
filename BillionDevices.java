@@ -1,4 +1,5 @@
 
+import net.mikekohn.java_grinder.Math;
 import net.mikekohn.java_grinder.Memory;
 import net.mikekohn.java_grinder.Nintendo64;
 import net.mikekohn.java_grinder.n64.Rectangle;
@@ -12,11 +13,18 @@ public class BillionDevices
     int screen = 0;
     int n;
 
+    short[] duke = Memory.preloadShortArray("assets/duke.rgba");
+
     // 256x108: White box.
     Rectangle rectangle_1 = new Rectangle();
     rectangle_1.setPosition(32, 56);
     rectangle_1.setSize(256, 108);
     rectangle_1.setColor(0xffffffff);
+
+    // Java Duke.
+    Rectangle rectangle_duke = new Rectangle();
+    rectangle_duke.setSize(16, 19);
+    rectangle_duke.setTextureEnabled(16, 19);
 
     // 256x20: 924a40 box.
     Rectangle rectangle_2 = new Rectangle();
@@ -74,11 +82,39 @@ public class BillionDevices
       screen = (screen + 1) & 1;
     }
 
+    int duke_x = 32, duke_y = 15;
+
+    for (n = 0; n < 60; n++)
+    {
+      Nintendo64.setScreen(screen);
+      Nintendo64.clearScreen();
+      rectangle_1.draw();
+      rectangle_2.draw();
+
+      Nintendo64.loadTexture(java, 32, 23);
+      rectangle_java.draw();
+
+      drawBillion();
+      drawJavaGrinder();
+
+      Nintendo64.loadTexture(duke, 16, 19);
+      rectangle_duke.setPosition(duke_x, duke_y);
+      rectangle_duke.draw();
+
+      duke_x += 2;
+      duke_y += (int)(6 * Math.sin512(n));
+
+      Nintendo64.waitForPolygon();
+      Nintendo64.waitVsync();
+
+      screen = (screen + 1) & 1;
+    }
+
     short[] its_me_java = Memory.preloadShortArray("assets/its_me_java.pcm");
 
     Nintendo64.setAudioDACRate(93750000 / 11000);
     Nintendo64.setAudioBitRate(2);
-    Nintendo64.playAudio(its_me_java, its_me_java.length * 2);
+    Nintendo64.playAudio(its_me_java, 0, its_me_java.length * 2);
 
     for (n = 0; n < 30 * 5; n++)
     {
@@ -87,11 +123,15 @@ public class BillionDevices
       rectangle_1.draw();
       rectangle_2.draw();
 
-      //Nintendo64.loadTexture(java, 32, 23);
+      Nintendo64.loadTexture(java, 32, 23);
       rectangle_java.draw();
 
       drawBillion();
       drawJavaGrinder();
+
+      Nintendo64.loadTexture(duke, 16, 19);
+      rectangle_duke.setPosition(duke_x, duke_y);
+      rectangle_duke.draw();
 
       Nintendo64.waitForPolygon();
       Nintendo64.waitVsync();

@@ -10,9 +10,9 @@ public class Credits
     'J', 'A', 'V', 'A', ' ', 'G', 'R', 'I', 'N', 'D', 'E', 'R'
   };
 
-  public static short[] letters_2022 =
+  public static short[] letters_2023 =
   {
-    '2', '0', '2', '2'
+    '2', '0', '2', '3'
   };
 
   public static short[] letters_demo_by =
@@ -50,11 +50,13 @@ public class Credits
 
     for (int count = 0; count < 690; count++)
     {
+      Song.playNext();
+
       Nintendo64.setScreen(screen);
       Nintendo64.clearScreen();
 
       drawText(letter, letters_java_grinder, 50, 40, start_k);
-      drawText(letter, letters_2022, 120, 60, start_k);
+      drawText(letter, letters_2023, 120, 60, start_k);
 
       drawText(letter, letters_demo_by, 100, 90, start_k);
       drawText(letter, letters_michael_kohn, 50, 110, start_k);

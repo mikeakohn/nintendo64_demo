@@ -11,6 +11,7 @@ CLASSES= \
   ManyTriangles.class \
   Matrix3D.class \
   Nintendo64Demo.class \
+  Song.class \
   TitleScreen.class
 
 default: $(CLASSES)
@@ -28,5 +29,5 @@ rsp:
 	cp ../naken_asm/samples/nintendo64/rsp.bin .
 
 clean:
-	@rm -f *.class *.hex *.asm *.lst *.bin *.z64
+	@rm -f *.class *.hex *.asm *.lst *.z64
 

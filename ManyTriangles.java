@@ -37,6 +37,8 @@ public class ManyTriangles
 
     for (int count = 0; count < 690; count++)
     {
+      Song.playNext();
+
       Nintendo64.setScreen(screen);
       Nintendo64.clearScreen();
 

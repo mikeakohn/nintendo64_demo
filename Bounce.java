@@ -59,6 +59,8 @@ public class Bounce
 
     for (int count = 0; count < 600; count++)
     {
+      Song.playNext();
+
       Nintendo64.setScreen(screen);
       Nintendo64.clearScreen();
       Nintendo64.resetZBuffer();

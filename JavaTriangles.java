@@ -72,6 +72,8 @@ public class JavaTriangles
 
     for (int count = 0; count < 770; count++)
     {
+      Song.playNext();
+
       Nintendo64.setScreen(screen);
       Nintendo64.clearScreen();
 

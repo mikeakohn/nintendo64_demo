@@ -36,6 +36,8 @@ public class JavaKong
 
     for (int count = 0; count < 360; count++)
     {
+      Song.playNext();
+
       Nintendo64.setScreen(screen);
       Nintendo64.clearScreen();
 

@@ -40,6 +40,8 @@ public class TitleScreen
 
     for (int count = 0; count < 510; count++)
     {
+      Song.playNext();
+
       Nintendo64.setScreen(screen);
       Nintendo64.clearScreen();
       rectangle.draw();
