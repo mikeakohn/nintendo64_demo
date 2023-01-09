@@ -12,7 +12,8 @@ CLASSES= \
   Matrix3D.class \
   Nintendo64Demo.class \
   Song.class \
-  TitleScreen.class
+  TitleScreen.class \
+  YearTriangles.class
 
 default: $(CLASSES)
 	$(JAVA_GRINDER) -v Nintendo64Demo.class nintendo64_demo.asm nintendo64

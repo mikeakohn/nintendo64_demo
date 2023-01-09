@@ -15,6 +15,7 @@ public class Nintendo64Demo
     Bounce.run();
     JavaKong.run();
     ManyTriangles.run();
+    YearTriangles.run();
     Credits.run();
 
     while (true)

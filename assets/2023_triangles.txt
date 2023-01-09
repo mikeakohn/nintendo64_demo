@@ -1,0 +1,5 @@
+GGGG    BBB   YYYY   PPPP
+    G  B   B      Y      P 
+ GGG   B   B   YYY    PPP 
+G      B   B  Y          P
+ GGGG   BBB    YYYY  PPPP 
