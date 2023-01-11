@@ -35,7 +35,7 @@ public class ManyTriangles
     triangle_1.setPosition(150, 100, 256 + 128 - 100);
     triangle_1.setColor(0xff00ffff);
 
-    for (int count = 0; count < 690; count++)
+    for (int count = 0; count < 590; count++)
     {
       Song.playNext();
 

@@ -116,7 +116,7 @@ public class BillionDevices
     Nintendo64.setAudioBitRate(2);
     Nintendo64.playAudio(its_me_java, 0, its_me_java.length * 2);
 
-    for (n = 0; n < 30 * 5; n++)
+    for (n = 0; n < 200; n++)
     {
       Nintendo64.setScreen(screen);
       Nintendo64.clearScreen();
@@ -137,6 +137,9 @@ public class BillionDevices
       Nintendo64.waitVsync();
 
       screen = (screen + 1) & 1;
+
+      // Music seems to start a little late without this.
+      if (n > 180) { Song.playNext(); }
     }
   }
 

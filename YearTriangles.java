@@ -155,7 +155,7 @@ public class YearTriangles
           (int)(160 + xyz[0]),
           (int)(120 + xyz[1]),
           (int)(256 + 128 - 100 + xyz[2]));
-        triangle.setRotation(0, 0, 0);
+        triangle.setRotation(0, 0, count & 511);
         triangle.setColor(colors[color_index]);
         triangle.draw();
 
